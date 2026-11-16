@@ -40,7 +40,7 @@ Until the settings are saved for the first time, every block is enabled.
 ## Adding a block
 
 1. Create `blocks/<name>/` with `block.json`, `render.php` and `style.css`.
-2. Add `"style": ["cwl-blocks-base", "file:./style.css"]` to `block.json`.
+2. In `block.json`, set `"category": "cwl-blocks"` and add `"style": ["cwl-blocks-base", "file:./style.css"]`.
 3. Create the field group in ACF with a title starting with "Block:" and save it.
 4. The block appears on the settings page automatically.
 

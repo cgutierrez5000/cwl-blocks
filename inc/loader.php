@@ -41,3 +41,29 @@ function cwl_blocks_register()
     }
 }
 add_action('init', 'cwl_blocks_register');
+
+/**
+ * Add a "CWL Blocks" category to the block inserter.
+ *
+ * Blocks pick it by setting "category": "cwl-blocks" in their block.json.
+ * It goes first in the list so the blocks are easy to find.
+ *
+ * @param array[] $categories The existing block categories.
+ * @return array[] The categories with ours added at the start.
+ */
+function cwl_blocks_add_category($categories)
+{
+    array_unshift(
+        $categories,
+        array(
+            'slug'  => 'cwl-blocks',
+            'title' => 'CWL Blocks',
+            'icon'  => null,
+        )
+    );
+
+    // Filters must always return the value.
+    return $categories;
+}
+// block_categories_all builds the category list for the editor.
+add_filter('block_categories_all', 'cwl_blocks_add_category');

@@ -4,7 +4,7 @@
     "name": "cwl/process",
     "title": "CWL Process",
     "description": "A heading with numbered steps on a navy background.",
-    "category": "design",
+    "category": "cwl-blocks",
     "icon": "editor-ol",
     "keywords": [
         "process",

@@ -4,7 +4,7 @@
     "name": "cwl/services",
     "title": "CWL Services",
     "description": "A heading with a responsive grid of service cards.",
-    "category": "design",
+    "category": "cwl-blocks",
     "icon": "grid-view",
     "keywords": [
         "services",

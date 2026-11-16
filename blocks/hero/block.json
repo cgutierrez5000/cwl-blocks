@@ -4,7 +4,7 @@
     "name": "cwl/hero",
     "title": "CWL Hero",
     "description": "Large heading section with a short intro and buttons.",
-    "category": "design",
+    "category": "cwl-blocks",
     "icon": "align-full-width",
     "keywords": [
         "hero",
