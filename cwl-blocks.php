@@ -24,3 +24,10 @@ if (! defined('ABSPATH')) {
 define('CWL_BLOCKS_VERSION', '0.1.0');
 define('CWL_BLOCKS_PATH', plugin_dir_path(__FILE__)); // Server path, with a trailing slash.
 define('CWL_BLOCKS_URL', plugin_dir_url(__FILE__));   // Web address, with a trailing slash.
+
+// Load the block loader.
+require_once CWL_BLOCKS_PATH . 'inc/loader.php';
+
+// Load ACF setup and helpers.
+require_once CWL_BLOCKS_PATH . 'inc/acf.php';
+require_once CWL_BLOCKS_PATH . 'inc/helpers.php';
