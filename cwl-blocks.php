@@ -25,9 +25,14 @@ define('CWL_BLOCKS_VERSION', '0.1.0');
 define('CWL_BLOCKS_PATH', plugin_dir_path(__FILE__)); // Server path, with a trailing slash.
 define('CWL_BLOCKS_URL', plugin_dir_url(__FILE__));   // Web address, with a trailing slash.
 
-// Load the block loader.
+// Registers the blocks found in /blocks (and the shared base stylesheet).
 require_once CWL_BLOCKS_PATH . 'inc/loader.php';
 
-// Load ACF setup and helpers.
+// Saves and loads the ACF field groups from this plugin's acf-json folder.
 require_once CWL_BLOCKS_PATH . 'inc/acf.php';
+
+// Shared helper functions used by the blocks, such as the button output.
 require_once CWL_BLOCKS_PATH . 'inc/helpers.php';
+
+// Settings helpers: lists the available blocks and which ones are switched on.
+require_once CWL_BLOCKS_PATH . 'inc/settings.php';

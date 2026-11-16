@@ -11,30 +11,27 @@ if (! defined('ABSPATH')) {
 }
 
 /**
- * Register each block that has a block.json inside the plugin's blocks folder.
+ * Register the shared stylesheet and every enabled block.
+ *
+ * Runs on the "init" hook. Only blocks switched on in the settings
+ * are registered, so disabled blocks never load any code or CSS.
+ *
+ * @return void
  */
 function cwl_blocks_register()
 {
-    // Full paths of every block.json one level down: blocks/hero/block.json, etc.
-    $files = glob(CWL_BLOCKS_PATH . 'blocks/*/block.json');
-
-    // glob() returns false on error, so make sure we have an array before looping.
-    if (! is_array($files)) {
-        return;
-    }
-
-    // Register the shared base stylesheet once. Each block lists its handle in block.json,
-    // so WordPress prints it a single time on any page that uses at least one CWL block.
+    // Shared component CSS. Registered once; each block.json lists it as a dependency.
     wp_register_style(
         'cwl-blocks-base',
         CWL_BLOCKS_URL . 'assets/css/base.css',
         array(),
-        filemtime(CWL_BLOCKS_PATH . 'assets/css/base.css') // Version from the file's last change, so caches refresh.
+        filemtime(CWL_BLOCKS_PATH . 'assets/css/base.css')
     );
 
-    foreach ($files as $file) {
-        // register_block_type() accepts the folder that holds block.json.
-        register_block_type(dirname($file));
+    // Loop over the enabled slugs (already checked against real folders).
+    foreach (cwl_blocks_get_enabled() as $slug) {
+        // Each block lives in blocks/<slug>/ and contains a block.json file.
+        register_block_type(CWL_BLOCKS_PATH . 'blocks/' . $slug);
     }
 }
 add_action('init', 'cwl_blocks_register');
