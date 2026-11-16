@@ -20,6 +20,12 @@ if (! defined('ABSPATH')) {
  */
 function cwl_blocks_register()
 {
+    // Without ACF Pro the blocks can't render, so register nothing.
+    // The admin notice (inc/requirements.php) tells the administrator why.
+    if (! cwl_blocks_acf_pro_active()) {
+        return;
+    }
+
     // Shared component CSS. Registered once; each block.json lists it as a dependency.
     wp_register_style(
         'cwl-blocks-base',

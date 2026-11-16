@@ -36,3 +36,6 @@ require_once CWL_BLOCKS_PATH . 'inc/helpers.php';
 
 // Settings helpers: lists the available blocks and which ones are switched on.
 require_once CWL_BLOCKS_PATH . 'inc/settings.php';
+
+// Requirement checks: warns administrators if ACF Pro is missing.
+require_once CWL_BLOCKS_PATH . 'inc/requirements.php';
