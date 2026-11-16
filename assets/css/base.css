@@ -1,0 +1,150 @@
+/* ==========================================================================
+   CWL Blocks: shared components used by the blocks.
+   Values read the theme's variables first (theme.json and main.css) and fall back
+   to the defaults after the comma when the theme doesn't define them.
+   ========================================================================== */
+
+/* Section: vertical spacing between page sections. */
+.section {
+    padding-block: 84px;
+}
+
+@media (min-width: 761px) {
+    .section {
+        padding-block: 128px;
+    }
+}
+
+/* Dark section: navy background, light text. */
+.has-navy-background {
+    background: var(--wp--preset--color--navy, #1f2937);
+    color: var(--wp--preset--color--canvas, #faf7f5);
+}
+
+/* Container: keeps content to the content width, with gutters at the sides. */
+.container {
+    width: 100%;
+    max-width: calc(var(--content-width, 1240px) + 2 * var(--gutter, 20px));
+    margin-inline: auto;
+    padding-inline: var(--gutter, 20px);
+}
+
+/* Grid: cards flow into as many columns as fit. */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--space-5, 1.5rem);
+}
+
+/* Card: a box with a soft shadow, used for services, steps and so on. */
+.card {
+    padding: var(--space-6, 2rem);
+    background: var(--wp--preset--color--canvas, #faf7f5);
+    border: 1px solid var(--wp--preset--color--mist, #d0d0d0);
+    border-radius: var(--radius-md, 18px);
+    box-shadow: 0 10px 30px rgba(31, 41, 55, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 48px rgba(31, 41, 55, 0.13);
+}
+
+/* Eyebrow: the small uppercase label above a heading (12px is the minimum text size). */
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--primary-deep, #c2410c);
+}
+
+/* On dark sections the eyebrow uses the lighter orange so it passes contrast. */
+.has-navy-background .eyebrow {
+    color: var(--wp--preset--color--primary-on-dark, #f58a63);
+}
+
+/* Buttons: base class plus one variant. */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-height: 54px;
+    padding: 0 var(--space-5, 1.5rem);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--wp--preset--color--primary-deep, #c2410c);
+    outline-offset: 3px;
+}
+
+.btn--accent {
+    background: var(--wp--preset--color--primary, #f1764a);
+    color: var(--wp--preset--color--ink, #111827);
+}
+
+.btn--accent:hover {
+    color: var(--wp--preset--color--ink, #111827);
+    box-shadow: inset 0 0 0 2px var(--wp--preset--color--primary-deep, #c2410c);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--wp--preset--color--ink, #111827);
+    border-color: currentcolor;
+}
+
+.btn--outline:hover {
+    background: var(--wp--preset--color--navy, #1f2937);
+    border-color: var(--wp--preset--color--navy, #1f2937);
+    color: var(--wp--preset--color--canvas, #faf7f5);
+}
+
+.has-navy-background .btn--outline {
+    color: var(--wp--preset--color--canvas, #faf7f5);
+    border-color: color-mix(in srgb, var(--wp--preset--color--canvas, #faf7f5) 42%, transparent);
+}
+
+.has-navy-background .btn--outline:hover {
+    background: var(--wp--preset--color--canvas, #faf7f5);
+    border-color: var(--wp--preset--color--canvas, #faf7f5);
+    color: var(--wp--preset--color--navy, #1f2937);
+}
+
+.btn--dark {
+    background: var(--wp--preset--color--navy, #1f2937);
+    color: var(--wp--preset--color--canvas, #faf7f5);
+}
+
+.btn--dark:hover {
+    background: var(--wp--preset--color--primary, #f1764a);
+    color: var(--wp--preset--color--ink, #111827);
+}
+
+/* Respect visitors who turn animations off in their system settings. */
+@media (prefers-reduced-motion: reduce) {
+
+    .btn,
+    .card {
+        transition: none;
+    }
+
+    .btn:hover,
+    .card:hover {
+        transform: none;
+    }
+}

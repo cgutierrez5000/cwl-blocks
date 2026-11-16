@@ -23,6 +23,15 @@ function cwl_blocks_register()
         return;
     }
 
+    // Register the shared base stylesheet once. Each block lists its handle in block.json,
+    // so WordPress prints it a single time on any page that uses at least one CWL block.
+    wp_register_style(
+        'cwl-blocks-base',
+        CWL_BLOCKS_URL . 'assets/css/base.css',
+        array(),
+        filemtime(CWL_BLOCKS_PATH . 'assets/css/base.css') // Version from the file's last change, so caches refresh.
+    );
+
     foreach ($files as $file) {
         // register_block_type() accepts the folder that holds block.json.
         register_block_type(dirname($file));

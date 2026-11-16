@@ -22,5 +22,8 @@
         "mode": "preview",
         "renderTemplate": "render.php"
     },
-    "style": "file:./style.css"
+    "style": [
+        "cwl-blocks-base",
+        "file:./style.css"
+    ]
 }
